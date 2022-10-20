@@ -31,3 +31,16 @@ testing first-message latency.
 
 A new `ActorSystem` is constructed and then torn-down per run.  This is a heavyweight operation and should be approximately constant from one run to the next.  The
 effect on the benchmark is to reduce the magnitude of reported differences.
+
+## Results
+
+See the `results/` directory.
+
+PRs will be accepted with new results, following the format of the results in that folder.  Feel free to use other settings (number of messages, max. number of actors,
+etc.: increasing the max. number of actors relative to the number of messages would be expected to stress first-message latency more) and include them in your results.
+
+### Summary
+
+| Result ID | Relative Advantage/(Disadvantage) | Messages/run, max. actors |
+| --------- | --------------------------------- | ------------------------- |
+| 20221019-leviramsey | +4.17% | 100k messages, up to 50k actors |

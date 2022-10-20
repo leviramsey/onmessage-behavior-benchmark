@@ -1,0 +1,36 @@
+CPU: Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz
+Git SHA: 4a41858009475c3190c1994968d3c9dcf36f1baa
+
+100k messages
+at most 50k actors
+
+sbt (root)> Jmh / run -i 100 -wi 2 -f1 -t1
+[info] # JMH version: 1.32
+[info] # VM version: JDK 11.0.16, OpenJDK 64-Bit Server VM, 11.0.16+8-jvmci-22.2-b06
+[info] # VM invoker: /home/levi/.sdkman/candidates/java/22.2.r11-grl/bin/java
+[info] # VM options: -XX:ThreadPriorityPolicy=1 -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions
+[info] # Blackhole mode: full + dont-inline hint
+[info] # Warmup: 2 iterations, 10 s each
+[info] # Measurement: 100 iterations, 10 s each
+[info] # Timeout: 10 min per iteration
+[info] # Threads: 1 thread, will synchronize iterations
+[info] # Benchmark mode: Throughput, ops/time
+
+[info] Result "abcxyz.BehaviorBenchmark.benchmarkAbstractBehavior":
+[info]   108992.043 ±(99.9%) 1463.980 ops/s [Average]
+[info]   (min, avg, max) = (95341.459, 108992.043, 117610.276), stdev = 4316.580
+[info]   CI (99.9%): [107528.062, 110456.023] (assumes normal distribution)
+
+[info] Result "abcxyz.BehaviorBenchmark.benchmarkOnMessage":
+[info]   113538.485 ±(99.9%) 1477.523 ops/s [Average]
+[info]   (min, avg, max) = (97957.751, 113538.485, 122853.365), stdev = 4356.510
+[info]   CI (99.9%): [112060.962, 115016.008] (assumes normal distribution)
+
+[info] REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+[info] why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+[info] experiments, perform baseline and negative tests that provide experimental control, make sure
+[info] the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+[info] Do not assume the numbers tell you what you want them to tell.
+[info] Benchmark                                     Mode  Cnt       Score      Error  Units
+[info] BehaviorBenchmark.benchmarkAbstractBehavior  thrpt  100  108992.043 ± 1463.980  ops/s
+[info] BehaviorBenchmark.benchmarkOnMessage         thrpt  100  113538.485 ± 1477.523  ops/s
