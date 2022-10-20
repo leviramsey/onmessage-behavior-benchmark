@@ -1,8 +1,9 @@
 import akka.actor.typed.ActorRef;
 
 public class Protocol {
-  /** The command from the outside */
-  public static class Set {
+  public interface Command {}
+
+  public static class Set implements Command {
     public Integer value;
     public ActorRef<Response> replyTo;
 
@@ -12,7 +13,17 @@ public class Protocol {
     }
   }
 
+  public static class Get implements Command {
+    public ActorRef<Response> replyTo;
+
+    public Get(ActorRef<Response> replyTo) {
+      this.replyTo = replyTo;
+    }
+  }
+
   public interface Response {}
+
+  public static Response NOT_YET_SET = new Response() {};
 
   public static Response INITIAL_SET = new Response() {};
 
