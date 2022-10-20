@@ -24,6 +24,9 @@ sbt (root)> Jmh / run -i 100 -wi 2 -f1 -t1
 
 ## Notes about the benchmark
 
+The benchmark spawns an actor and sends, progressively more messages to it (starting from zero).  The same `ActorSystem` is used from run to run.
+
+### Earlier version (pre-`5a55280de8d209e0414c061204115d5c8ddb1564`)
 The basic idea is to randomly spawn actors and send messages to them.  Some actors may be sent multiple (or even many) messages, depending on "how the dice fall".
 The more messages are sent per run and the more runs, the more this luck should even out.  The hypothesis suggests that the overhead is primarily felt on the
 first message, but since the point of an actor is often (with _many_ exceptions!) to receive many messages, there would be nothing more artificial than only
@@ -38,11 +41,3 @@ See the `results/` directory.
 
 PRs will be accepted with new results, following the format of the results in that folder.  Feel free to use other settings (number of messages, max. number of actors,
 etc.: increasing the max. number of actors relative to the number of messages would be expected to stress first-message latency more) and include them in your results.
-
-### Summary
-
-"Advantage" denotes `AbstractOnMessageBehavior` exhibiting greater throughput.
-
-| Result ID | Relative Advantage/(Disadvantage) | Messages/run, max. actors |
-| --------- | --------------------------------- | ------------------------- |
-| 20221019-leviramsey | +4.17% | 100k messages, up to 50k actors |

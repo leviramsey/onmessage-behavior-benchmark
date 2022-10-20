@@ -1,5 +1,5 @@
 CPU: Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz
-Git SHA: 4a41858009475c3190c1994968d3c9dcf36f1baa
+Git SHA: 4a41858009475c3190c1994968d3c9dcf36f1baa (original benchmark, "mixed")
 
 100k messages
 at most 50k actors
