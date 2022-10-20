@@ -41,6 +41,8 @@ etc.: increasing the max. number of actors relative to the number of messages wo
 
 ### Summary
 
+"Advantage" denotes `AbstractOnMessageBehavior` exhibiting greater throughput.
+
 | Result ID | Relative Advantage/(Disadvantage) | Messages/run, max. actors |
 | --------- | --------------------------------- | ------------------------- |
 | 20221019-leviramsey | +4.17% | 100k messages, up to 50k actors |
